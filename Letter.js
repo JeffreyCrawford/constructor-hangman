@@ -1,3 +1,5 @@
+var inquirer = require("inquirer")
+
 var input = process.argv[2]
 
 var wordArray = [];
