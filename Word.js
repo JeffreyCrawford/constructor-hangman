@@ -11,15 +11,23 @@ Word.prototype.returnString = function() {
 
 }
 
+
+
+
+
 Word.prototype.pushLetters = function() {
     for (i = 0; i < this.string.length; i++) {
         var letter = new LetterObject(); 
-        letter.character = this.string[i];
         this.letterArray.push(letter);
     }
     console.log(this.letterArray);
 }
 
+Word.prototype.returnState = function() {
+    for (i = 0; i , letterArray.length; i++) {
+        console.log()
+    }
+}
 
 var hello = new Word();
 
@@ -28,5 +36,4 @@ hello.string = "hello"
 
 hello.returnString();
 hello.pushLetters();
-
 

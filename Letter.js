@@ -4,11 +4,11 @@ var LetterObject = function() {
 }
 
 LetterObject.prototype.returnCharacter = function() {
-    if(guessedYet) {
-        return this.character
+    if(this.guessedYet) {
+        return (this.character)
     }
     else {
-        return "_"
+        return ("_")
     }
 }
 
