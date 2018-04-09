@@ -1,23 +1,9 @@
-var input = process.argv[2]
-var wordArray = [];
-
-
-exports.letter = {
-    Letter: function() {
-        this.character;
-        this.guessedYet = false;
-    }
+var LetterObject = function() {
+    this.character;
+    this.guessedYet = false;
 }
 
-
-
-
-
-
-
-
-
-Letter.prototype.returnCharacter = function() {
+LetterObject.prototype.returnCharacter = function() {
     if(guessedYet) {
         return this.character
     }
@@ -26,8 +12,7 @@ Letter.prototype.returnCharacter = function() {
     }
 }
 
-
-Letter.prototype.checkGuess = function() {
+LetterObject.prototype.checkGuess = function() {
     if(input === this.character) {
         this.guessedYet = true;
 
@@ -37,10 +22,12 @@ Letter.prototype.checkGuess = function() {
     }
 }
 
-
 var printState = function() {
     console.log("print state")
 }
+
+
+module.exports = LetterObject;
 
 
 

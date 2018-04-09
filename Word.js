@@ -1,9 +1,9 @@
-var letter = require("./letter.js")
+var LetterObject = require("./letter.js")
 
 
 var Word = function() {
     this.string;
-    this.letters = [];
+    this.letterArray = [];
 }
 
 Word.prototype.returnString = function() {
@@ -13,11 +13,11 @@ Word.prototype.returnString = function() {
 
 Word.prototype.pushLetters = function() {
     for (i = 0; i < this.string.length; i++) {
-        var letter = new letter(letter.Letter.character); 
+        var letter = new LetterObject(); 
         letter.character = this.string[i];
-        this.letters.push(letter)
+        this.letterArray.push(letter);
     }
-    console.log(this.letters);
+    console.log(this.letterArray);
 }
 
 
