@@ -34,3 +34,17 @@ Letter.prototype.checkGuess = function() {
 var printState = function() {
     console.log(wordArray)
 }
+
+var test = function() {
+    inquirer.prompt([
+        {
+            name: "name",
+            message: "What's your name?"
+        }
+    ]).then(function(answer) {
+        console.log(answer.name)
+    })
+}
+
+
+test();
