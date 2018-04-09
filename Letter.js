@@ -1,13 +1,20 @@
-var inquirer = require("inquirer")
-
 var input = process.argv[2]
-
 var wordArray = [];
 
-var Letter = function() {
-    character: "string";
-    guessedYet: false;
+
+exports.letter = {
+    Letter: function() {
+        this.character;
+        this.guessedYet = false;
+    }
 }
+
+
+
+
+
+
+
 
 
 Letter.prototype.returnCharacter = function() {
@@ -32,19 +39,9 @@ Letter.prototype.checkGuess = function() {
 
 
 var printState = function() {
-    console.log(wordArray)
-}
-
-var test = function() {
-    inquirer.prompt([
-        {
-            name: "name",
-            message: "What's your name?"
-        }
-    ]).then(function(answer) {
-        console.log(answer.name)
-    })
+    console.log("print state")
 }
 
 
-test();
+
+
