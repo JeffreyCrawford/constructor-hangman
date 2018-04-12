@@ -1,6 +1,14 @@
 var LetterObject = function() {
     this.character;
     this.guessedYet = false;
+    this.display = function() {
+        if(this.guessedYet) {
+            return (this.character)
+        }
+        else {
+            return ("_")
+        }
+    }
 }
 
 LetterObject.prototype.returnCharacter = function() {

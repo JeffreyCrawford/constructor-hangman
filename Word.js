@@ -18,7 +18,11 @@ Word.prototype.returnString = function() {
 Word.prototype.pushLetters = function() {
     for (i = 0; i < this.string.length; i++) {
         var letter = new LetterObject(); 
+        letter.character = this.string[i];
+        letter.display();
         this.letterArray.push(letter);
+        console.log(letter.display());
+        
     }
     console.log(this.letterArray);
 }
