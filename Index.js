@@ -27,8 +27,10 @@ fillArray();
 
 var newWord = new Word(text, letterArray)
 
-console.log(newWord.text);
-console.log(newWord.letterArray);
+console.log(newWord.text)
+newWord.returnString();
+
+
 
 var begin = function() {
     if (count < 3) {
@@ -38,11 +40,25 @@ var begin = function() {
             message: "Guess a letter!"
             }
         ]).then(function(input) {
+             
+            if (newWord.text.includes(input.guess)) {
+                console.log("\n");
+                console.log("CORRECT!")
+            }
+            else {
+                console.log("\n");
+                console.log("WRONG!")
+                count++;
+            }
+            console.log("\n");
             newWord.returnString(input.guess);
-            count++;
+             
             begin();
             
         })
+    }
+    else {
+        console.log("YOU LOSE!")
     }
 }
 
