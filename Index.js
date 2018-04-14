@@ -33,13 +33,14 @@ var count = 0;
 
 
 /* DISPLAYS INITIAL _ STRING */
-newWord.returnString();
+
 
 
 var reset = function() {
     count = 0;
-    var letterArray = [];
-    wordSelection();
+    letterArray = [];
+    text = wordSelection().toString();
+    newWord = new Word(text, letterArray);
     fillArray();
     newWord.returnString();
     begin();
@@ -48,7 +49,7 @@ var reset = function() {
 
 /* PROMPTS THE USER TO GUESS A LETTER */
 var begin = function() {
-    if (count < 30) {
+    if (count < 3) {
         inquirer.prompt([
             {
             name: "guess",
@@ -96,4 +97,4 @@ var begin = function() {
     }
 }
 
-begin();
+reset();
