@@ -1,12 +1,21 @@
-var inquirer = require("inquirer")
+var inquirer = require("inquirer");
+var word = require("./word.js");
 
-var test = function() {
+var guess = function() {
+    count = 0;
     inquirer.prompt([
         {
-            name: "name",
-            message: "What's your name?"
+            name: "guess",
+            message: "Guess a letter!"
         }
-    ]).then(function(answer) {
-        console.log(answer.name)
+    ]).then(function(guess) {
+        console.log(guess.name)
+        if (word.includes(guess.name)) {
+            
+        }
+        else {
+
+        }
+        count++
     })
 }
