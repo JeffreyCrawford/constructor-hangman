@@ -13,7 +13,7 @@ var wordSelection = function() {
 /* NEW WORD OBJECT VARIABLES */
 var text = wordSelection().toString();
 var letterArray = [];
-
+var guessedLetters = [];
 var newWord = new Word(text, letterArray);
 
 
@@ -32,10 +32,6 @@ var input = process.argv[2];
 var count = 0;
 
 
-/* DISPLAYS INITIAL _ STRING */
-
-
-
 var reset = function() {
     count = 0;
     letterArray = [];
@@ -45,6 +41,7 @@ var reset = function() {
     newWord.returnString();
     begin();
 }
+
 
 var checkProgress = function() {
     if (newWord.text === newWord.letterArray.join("")) {
@@ -75,31 +72,37 @@ var playAgain = function() {
 
 /* PROMPTS THE USER TO GUESS A LETTER */
 var begin = function() {
-    if (count < 30) {
+    if (count < 10) {
         inquirer.prompt([
             {
             name: "guess",
             message: "Guess a letter!"
             }
         ]).then(function(input) {
-            /* IF THE WORD INCLUDES THE GUESS, LOG CORRECT AND CHECK IF THEY'VE WON */
-            if (newWord.text.includes(input.guess.toLowerCase())) {
+            if (guessedLetters.includes(input.guess.toLowerCase())) {
                 console.log("\n");
-                console.log("CORRECT!");
-                
+                console.log("You already guessed that");
+                begin();
             }
-            /* IF THE WORD DOES NOT INCLUDE THE GUESS, LOG WRONG AND ADD TO THE MISS COUNT */
             else {
+                guessedLetters.push(input.guess.toLowerCase())
+                if (newWord.text.includes(input.guess.toLowerCase())) {
+                    console.log("\n");
+                    console.log("CORRECT!");
+                    
+                }
+
+                else {
+                    console.log("\n");
+                    console.log("WRONG!");
+                    count++;
+                    console.log("\n");
+                    console.log(10 - count + " guesses remaining!");
+                }
                 console.log("\n");
-                console.log("WRONG!");
-                count++;
-                console.log("\n");
-                console.log(10 - count + " guesses remaining!");
+                newWord.returnString(input.guess.toLowerCase());
+                checkProgress();
             }
-            console.log("\n");
-            newWord.returnString(input.guess.toLowerCase());
-            checkProgress();
-            
             
         })
     }
