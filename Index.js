@@ -13,6 +13,7 @@ var wordSelection = function() {
 /* NEW WORD OBJECT VARIABLES */
 var text = wordSelection().toString();
 var letterArray = [];
+
 var newWord = new Word(text, letterArray);
 
 
@@ -30,15 +31,24 @@ fillArray();
 var input = process.argv[2];
 var count = 0;
 
-console.log(newWord.text)
 
 /* DISPLAYS INITIAL _ STRING */
 newWord.returnString();
 
 
+var reset = function() {
+    count = 0;
+    var letterArray = [];
+    wordSelection();
+    fillArray();
+    newWord.returnString();
+    begin();
+}
+
+
 /* PROMPTS THE USER TO GUESS A LETTER */
 var begin = function() {
-    if (count < 3) {
+    if (count < 30) {
         inquirer.prompt([
             {
             name: "guess",
@@ -76,8 +86,8 @@ var begin = function() {
             message: "Play Again?"
             }
         ]).then(function(input) {
-            if (input.restart === "Yes") {
-                begin();
+            if (input.restart) {
+                reset();
             }
             else {
                 console.log("GAME OVER")
