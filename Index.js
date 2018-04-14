@@ -1,23 +1,48 @@
+var Word = require("./word.js");
+var Letter = require("./letter.js");
 var inquirer = require("inquirer");
-var word = require("./word.js");
 
-var guess = function() {
-    count = 0;
-    inquirer.prompt([
-        {
-            name: "guess",
-            message: "Guess a letter!"
-        }
-    ]).then(function(guess) {
-        console.log(guess.name)
-        if (word.includes(guess.name)) {
-            
-        }
-        else {
+var input = process.argv[2];
 
-        }
-        count++
-    })
+var wordList = ["astrophysics", "astronomy", "atom", "beaker", "biochemistry", "biology", "botany", "cell", "chemical", "chemistry", "climate", "climatologist", "control", "cuvette", "data", "datum", "electricity", "electrochemist", "element", "energy", "entomology", "evolution", "experiment", "fact", "flask", "fossil", "funnel", "genetics", "geology", "geophysics", "glassware", "gravity", "herpetology", "hypothesis", "ichthyology", "immunology", "lab", "laboratory", "laws", "lepidoptery", "magnetism", "mass", "matter", "measure", "meteorologist", "meteorology", "microbiologist", "microbiology", "microscope", "mineral", "mineralogy", "molecule", "motion", "observe", "observatory", "organism", "ornithology", "paleontology", "particle", "phase", "physics", "pipette", "radiology", "research", "retort", "scale", "science", "scientist", "seismology", "telescope", "temperature", "theory", "thermometer", "tissue", "variable", "virologist", "volcanology", "volume", "weather", "weigh", "zoology"];
+var wordSelection = wordList[Math.floor(Math.random()*wordList.length)];
+
+var count = 0;
+
+
+var text = wordSelection.toString();
+var letterArray = [];
+
+
+var newWord = new Word(text, letterArray)
+
+var fillArray = function() {
+    for (i = 0; i < text.length; i++) {
+        var newLetter = new Letter(text[i])
+        letterArray.push(newLetter);
+    }
 }
 
-guess();
+
+
+fillArray();
+
+newWord.returnString();
+console.log(newWord.text);
+console.log(newWord.letterArray);
+
+var begin = function() {
+    if (count < 3) {
+        inquirer.prompt([
+            {
+            name: "guess",
+            message: "Guess a letter!"
+            }
+        ]).then(function(answers) {
+            count++;
+            begin();
+        })
+    }
+}
+
+begin();

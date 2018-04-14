@@ -1,18 +1,13 @@
-var Letter = function(character, guessedYet) {
+var Letter = function(character) {
     this.character = character;
     this.guessedYet = false;
 };
 
 
-/* IF INPUT MATCHES CHARACTER VALUE, CHANGE GUESSEDYET TO TRUE */
-Letter.prototype.checkGuess = function(input) {
-    if (input === this.character) {
-        this.guessedYet = true;
-    }
-}
+
 
 /* IF THE LETTER HAS BEEN GUESSED, DISPLAY IT, OTHERWISE DISPLAY _ */
-Letter.prototype.display = function() {
+Letter.prototype.toString = function() {
     if (this.guessedYet) {
         return this.character
     }
@@ -21,6 +16,13 @@ Letter.prototype.display = function() {
     }
 }
 
+
+/* IF INPUT MATCHES CHARACTER VALUE, CHANGE GUESSEDYET TO TRUE */
+Letter.prototype.checkGuess = function(input) {
+    if (input === this.character) {
+        this.guessedYet = true;
+    }
+}
 
 
 /* var test = new Letter("g");
