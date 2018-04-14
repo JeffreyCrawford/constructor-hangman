@@ -8,9 +8,10 @@ var Word = function(text, letterArray) {
 }
 
 Word.prototype.returnString = function(input) {
-    for (i = 0; i < this.letterArray; i++) {
-        letterArray[i].checkGuess(input);
+    for (i = 0; i < this.letterArray.length; i++) {
+        this.letterArray[i].checkGuess(input);
     }
+    console.log(this.letterArray.join(" "))
 }
 
 

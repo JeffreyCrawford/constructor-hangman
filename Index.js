@@ -14,8 +14,6 @@ var text = wordSelection.toString();
 var letterArray = [];
 
 
-var newWord = new Word(text, letterArray)
-
 var fillArray = function() {
     for (i = 0; i < text.length; i++) {
         var newLetter = new Letter(text[i])
@@ -27,7 +25,8 @@ var fillArray = function() {
 
 fillArray();
 
-newWord.returnString();
+var newWord = new Word(text, letterArray)
+
 console.log(newWord.text);
 console.log(newWord.letterArray);
 
@@ -38,9 +37,11 @@ var begin = function() {
             name: "guess",
             message: "Guess a letter!"
             }
-        ]).then(function(answers) {
+        ]).then(function(input) {
+            newWord.returnString(input.guess);
             count++;
             begin();
+            
         })
     }
 }
