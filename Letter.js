@@ -1,41 +1,32 @@
-var LetterObject = function() {
-    this.character;
+var input = process.argv[2];
+
+var Letter = function(character) {
+    this.character = character;
     this.guessedYet = false;
-    this.display = function() {
-        if(this.guessedYet) {
-            return (this.character)
-        }
-        else {
-            return ("_")
-        }
-    }
-}
+    this.display = "_";
+};
 
-LetterObject.prototype.returnCharacter = function() {
-    if(this.guessedYet) {
-        return (this.character)
-    }
-    else {
-        return ("_")
-    }
-}
 
-LetterObject.prototype.checkGuess = function() {
-    if(input === this.character) {
+Letter.prototype.guess = function() {
+    if (input === this.character) {
+        console.log("CORRECT");
         this.guessedYet = true;
-
+        this.display = this.character;
     }
     else {
-
+        console.log("INCORRECT")
     }
-}
-
-var printState = function() {
-    console.log("print state")
-}
+};
 
 
-module.exports = LetterObject;
+
+/* var b = new Letter("b");
+b.guess();
+console.log(b); */
+
+
+
+module.exports = Letter;
 
 
 

@@ -1,43 +1,31 @@
-var LetterObject = require("./letter.js")
+var Letter = require("./letter.js")
 
+var selectedWord = "string";
 
-var Word = function() {
-    this.string;
+var Word = function(selectedWord) {
+    this.string = selectedWord;
     this.letterArray = [];
 }
 
-Word.prototype.returnString = function() {
-    console.log(this.string);
-
-}
-
-
-
-
-
-Word.prototype.pushLetters = function() {
+Word.prototype.fillArray = function(selectedWord) {
     for (i = 0; i < this.string.length; i++) {
-        var letter = new LetterObject(); 
+        var letter = new Letter(); 
         letter.character = this.string[i];
-        letter.display();
         this.letterArray.push(letter);
-        console.log(letter.display());
         
     }
     console.log(this.letterArray);
 }
 
-Word.prototype.returnState = function() {
-    for (i = 0; i , letterArray.length; i++) {
-        console.log()
-    }
-}
-
-var hello = new Word();
-
-hello.string = "hello"
+var word = new Word(selectedWord);
 
 
-hello.returnString();
-hello.pushLetters();
 
+
+
+word.fillArray(selectedWord);
+console.log(word)
+
+word.letterArray.forEach(function(letter) {
+    letter.guess();
+})
