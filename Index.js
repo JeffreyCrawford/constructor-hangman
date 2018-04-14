@@ -19,3 +19,5 @@ var guess = function() {
         count++
     })
 }
+
+guess();

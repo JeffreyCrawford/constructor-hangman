@@ -1,32 +1,36 @@
-var input = process.argv[2];
-
-var Letter = function(character) {
+var Letter = function(character, guessedYet) {
     this.character = character;
     this.guessedYet = false;
-    this.display = "_";
 };
 
 
-Letter.prototype.guess = function() {
+/* IF INPUT MATCHES CHARACTER VALUE, CHANGE GUESSEDYET TO TRUE */
+Letter.prototype.checkGuess = function(input) {
     if (input === this.character) {
-        console.log("CORRECT");
         this.guessedYet = true;
-        this.display = this.character;
+    }
+}
+
+/* IF THE LETTER HAS BEEN GUESSED, DISPLAY IT, OTHERWISE DISPLAY _ */
+Letter.prototype.display = function() {
+    if (this.guessedYet) {
+        return this.character
     }
     else {
-        console.log("INCORRECT")
+        return "_"
     }
-};
+}
 
 
 
-/* var b = new Letter("b");
-b.guess();
-console.log(b); */
-
-
+/* var test = new Letter("g");
+test.checkGuess(input);
+test.display();
+console.log(test);
+console.log(test.display()); */
 
 module.exports = Letter;
+
 
 
 
