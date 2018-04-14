@@ -32,34 +32,35 @@ var reset = function() {
     newWord = new Word(text, letterArray);
     fillArray();
     newWord.returnString();
-    console.log(newWord.text)
     begin();
 }
 
+var checkProgress = function() {
+    if (newWord.text === newWord.letterArray.join("")) {
+        console.log("YOU WIN")
+        playAgain();
+    }
+    else {
+        begin();
+    }
+}
 
 /* PROMPTS THE USER TO GUESS A LETTER */
 var begin = function() {
-    if (count < 3) {
+    if (count < 10) {
         inquirer.prompt([
             {
             name: "guess",
             message: "Guess a letter!"
             }
         ]).then(function(input) {
-            /* IF THE WORD INCLUDES THE GUESS, LOG CORRECT AND CHECK IF THEY'VE WON */
             if (newWord.text.includes(input.guess.toLowerCase())) {
                 console.log("\n");
                 console.log("CORRECT!")
 
-                var checkProgress = function() {
-                    if (newWord.text === newWord.letterArray.join("")) {
-                        console.log("YOU WIN")
-                        playAgain();
-                    }
-                }
-                checkProgress();
+
+                
             }
-            /* IF THE WORD DOES NOT INCLUDE THE GUESS, LOG WRONG AND ADD TO THE MISS COUNT */
             else {
                 console.log("\n");
                 console.log("WRONG!")
@@ -70,10 +71,12 @@ var begin = function() {
             console.log("\n");
             newWord.returnString(input.guess.toLowerCase());
 
-
-            begin();
             
+            
+            checkProgress();
+
         })
+        
     }
     else {
         console.log("\n");
